@@ -1,0 +1,39 @@
+<html>
+    <head>
+            <meta charset="utf-8">
+            <title>Bleu Hackathon 2018</title>
+    </head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+    <body>
+        <div align="center">
+            <h1> {{ .Title }} </h1>
+            <h2> {{ .SubTitle }} </h2>
+        </div>
+        <div align="center">
+        <input onclick='
+                        var x = document.getElementById("stop-button");
+                        if (x.style.display === "none") {
+                            x.style.display = "inline-block";
+                        } else {
+                            x.style.display = "none";
+                        }
+                        responsiveVoice.setDefaultVoice("Portuguese Female");
+                        responsiveVoice.speak("{{ .ReportText }}");'
+                type='button'
+                value='Não quer ler? Clique aqui e escute!   🔊'
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/>
+        <input id="stop-button" style="display: none;" onclick='responsiveVoice.cancel();
+                                                               var x = document.getElementById("stop-button");
+                                                               if (x.style.display === "none") {
+                                                                   x.style.display = "inline-block";
+                                                               } else {
+                                                                   x.style.display = "none";
+                                                               }'
+                type='button' value='🛑' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/>
+        </div>
+        <div style="padding: 3em"><p> {{ .ReportText }} </p></div>
+    </body>
+</html>
