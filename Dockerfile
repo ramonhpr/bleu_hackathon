@@ -14,7 +14,14 @@ RUN go get -d github.com/ethereum/go-ethereum
 
 RUN go build -o dona-maria .
 
-EXPOSE 8080:8080
+ENV AWS_SDK_LOAD_CONFIG=true
+ENV AWS_REGION=us-east-2
+
+RUN mkdir -p ~/.aws/
+
+RUN echo "[bleu-hackathon]\naws_access_key_id = \naws_secret_access_key = " > ~/.aws/credentials
+
+EXPOSE 8080
 
 CMD ["./dona-maria"]
 

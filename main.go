@@ -127,7 +127,7 @@ type donaMariaPage struct {
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	p := donaMariaPage{
 		Title:      "Olá, Dona Maria!",
-		SubTitle:   "Aqui está a notícia removida pelo governo chinês :)",
+		SubTitle:   "Aqui está a notícia censurada pelo governo chinês :)",
 		ReportText: articleTextInPt,
 	}
 	t, err := template.ParseFiles("templates/donamaria.gohtml")
